@@ -8,7 +8,7 @@ import java.util.Random;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.IntStream.range;
 
-public class Universe {
+public final class Universe {
     private final List<BitSet> map;
     private int generation = 1;
 
@@ -38,12 +38,12 @@ public class Universe {
         return range(0, map.size()).mapToObj(i -> row.get(i) ? "O" : " ").collect(joining());
     }
 
-    boolean isLive(int row, int col) {
+    boolean isAlive(int row, int col) {
         return map.get(normalise(row)).get(normalise(col));
     }
 
     int getValue(int row, int col) {
-        return isLive(row, col) ? 1 : 0;
+        return isAlive(row, col) ? 1 : 0;
     }
 
     int getNeighboursCount(int row, int col) {
@@ -67,7 +67,7 @@ public class Universe {
         return i;
     }
 
-    public int size() {
+    public int getSize() {
         return map.size();
     }
 
@@ -79,7 +79,7 @@ public class Universe {
         map.get(row).set(col, isLive);
     }
 
-    int getAliveCount() {
+    public int getAliveCount() {
         return map.stream().mapToInt(BitSet::cardinality).sum();
     }
 
@@ -94,7 +94,7 @@ public class Universe {
             final var nextRow = new BitSet(map.size());
             for (int col = 0; col < map.size(); ++col) {
                 final int neighbours = getNeighboursCount(row, col);
-                final var isLive = neighbours == 3 || neighbours == 2 && isLive(row, col);
+                final var isLive = neighbours == 3 || neighbours == 2 && isAlive(row, col);
                 nextRow.set(col, isLive);
             }
             next.add(nextRow);
