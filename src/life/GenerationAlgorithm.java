@@ -1,16 +1,9 @@
 package life;
 
-public class Evolution extends Thread {
-    private final Universe oldGeneration;
-    private final Universe nextGeneration;
+public class GenerationAlgorithm {
+    static Universe getNextGeneration(Universe oldGeneration) {
+        Universe nextGeneration = new Universe(oldGeneration.getSize());
 
-    public Evolution(Universe oldGeneration) {
-        this.oldGeneration = oldGeneration;
-        nextGeneration = new Universe(oldGeneration.getSize());
-    }
-
-    @Override
-    public void run() {
         for (int row = 0; row < oldGeneration.getSize(); ++row) {
             for (int col = 0; col < oldGeneration.getSize(); ++col) {
                 final int neighbours = oldGeneration.getNeighboursCount(row, col);
@@ -18,9 +11,6 @@ public class Evolution extends Thread {
                 nextGeneration.setCell(row, col, isLive);
             }
         }
-    }
-
-    public Universe getNextGeneration() {
         return nextGeneration;
     }
 }
