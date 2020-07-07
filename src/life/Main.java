@@ -1,7 +1,8 @@
 package life;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
-        new GameOfLife();
+    public static void main(String[] args) {
+        new GameOfLife()
+                .advanceGenerations();
     }
 }
