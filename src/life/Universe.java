@@ -8,7 +8,7 @@ import java.util.Random;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.IntStream.range;
 
-public class Universe {
+public final class Universe {
     private final List<BitSet> map;
     private int generation = 1;
 
