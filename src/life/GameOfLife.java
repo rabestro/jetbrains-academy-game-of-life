@@ -1,7 +1,6 @@
 package life;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.logging.Logger;
 
 public class GameOfLife extends JFrame {
@@ -68,6 +67,7 @@ public class GameOfLife extends JFrame {
         optionsPanel.setGenerationLabel(generation);
         add(optionsPanel);
         add(new BoardPanel(board, optionsPanel.getColor()));
+
         repaint();
         pack();
         validate();
