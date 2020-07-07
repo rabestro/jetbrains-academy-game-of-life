@@ -71,4 +71,34 @@ public class OptionsPanel extends JPanel {
     public void setAliveLabel(int alive) {
         aliveLabel.setText("Alive : " + alive);
     }
+
+    public Color getColor() {
+        return this.colorChooser.getColor();
+    }
+
+    public int getFieldSize() {
+        int size = 50;
+        try {
+            size = Integer.parseInt(fieldSize.getText());
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return size;
+    }
+
+    public boolean getPause() {
+        return pause;
+    }
+
+    public int waitTime() {
+        return 5000 / speedSlider.getValue();
+    }
+
+    public boolean getReset() {
+        if (reset) {
+            reset = false;
+            return true;
+        }
+        return false;
+    }
 }
