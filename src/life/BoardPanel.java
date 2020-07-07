@@ -1,5 +1,6 @@
 package life;
 
+
 import javax.swing.*;
 import java.awt.*;
 
