@@ -2,7 +2,6 @@ package life;
 
 import javax.swing.*;
 import java.awt.*;
-//import java.awt.*;
 
 public class OptionsPanel extends JPanel {
     private final JLabel generationLabel;
@@ -10,7 +9,6 @@ public class OptionsPanel extends JPanel {
     private final JToggleButton pauseButton;
     private final JLabel speedLabel;
     private final JSlider speedSlider;
-    private final JColorChooser colorChooser;
     private final JTextField fieldSize;
     private boolean pause = false;
     private boolean reset = false;
@@ -56,12 +54,6 @@ public class OptionsPanel extends JPanel {
         speedSlider.setValue(5);
         speedSlider.addChangeListener(changeEvent ->
                 speedLabel.setText("Speed mode : " + speedSlider.getValue()));
-
-
-        add(new JLabel("Choose color : "));
-        colorChooser = new JColorChooser();
-        colorChooser.setColor(Color.BLACK);
-        add(colorChooser);
     }
 
     public void setGenerationLabel(int generation) {
@@ -70,10 +62,6 @@ public class OptionsPanel extends JPanel {
 
     public void setAliveLabel(int alive) {
         aliveLabel.setText("Alive : " + alive);
-    }
-
-    public Color getColor() {
-        return this.colorChooser.getColor();
     }
 
     public int getFieldSize() {
